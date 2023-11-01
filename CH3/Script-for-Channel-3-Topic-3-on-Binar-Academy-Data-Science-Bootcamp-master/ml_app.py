@@ -8,9 +8,9 @@ gradio_ui = gr.Interface(
     fn=data_processing,
     title="Data Processing and Modeling",
     description="Aplikasi Web Data Processing dan Modeling",
-    inputs=gr.inputs.Textbox(lines=10, label="Paste some text here"),
+    inputs=gr.Textbox(lines=10, label="Paste some text here"),
     outputs=[
-        gr.outputs.Textbox(label="Result"),
+        gr.Textbox(label="Result"),
     ],
 )
 

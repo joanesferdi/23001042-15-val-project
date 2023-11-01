@@ -3,7 +3,6 @@ import gradio as gr
 import pandas as pd
 
 def data_processing(file_obj):
-
     # Import file csv ke Pandas
     df = pd.read_csv(file_obj.name)
 
@@ -17,12 +16,10 @@ def data_processing(file_obj):
 
     return cleaned_text
 
-
 gradio_ui = gr.Interface(data_processing, 
-                            title="Data Processing and Modeling",
-                            description="Aplikasi Web Data Processing dan Modeling",
-                            inputs="file", 
-                            outputs="json")
+                        title="Data Processing and Modeling",
+                        description="Aplikasi Web Data Processing dan Modeling",
+                        inputs="file", 
+                        outputs="json")
 
 gradio_ui.launch()
-
