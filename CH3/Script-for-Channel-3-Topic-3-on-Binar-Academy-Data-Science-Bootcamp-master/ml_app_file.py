@@ -2,21 +2,26 @@ import re
 import gradio as gr
 import pandas as pd
 
-def data_processing(file_obj):
+def proses_cleaning(inifilenya):
     # Import file csv ke Pandas
-    df = pd.read_csv(file_obj.name)
+    df = pd.read_csv(inifilenya.name)
 
     # Ambil teks yang akan diproses dalam format list
-    texts = df.text.to_list()
+    # bowo: Text_tweet
+    # calier: text // text tweet
+    # farid: ['Text tweet']
+    
+    #texts = df.Text_tweet.to_list()
+    texts = df['Text_tweet'].to_list()
 
     # Lakukan cleansing pada teks
-    cleaned_text = []
+    cleaned_texttt = []
     for text in texts:
-        cleaned_text.append(re.sub(r'[^a-zA-Z0-9]', ' ', text))
+        cleaned_texttt.append(re.sub(r'https\S+|[^a-zA-Z0-9]', '', text))
 
-    return cleaned_text
+    return cleaned_texttt
 
-gradio_ui = gr.Interface(data_processing, 
+gradio_ui = gr.Interface(proses_cleaning, 
                         title="Data Processing and Modeling",
                         description="Aplikasi Web Data Processing dan Modeling",
                         inputs="file", 

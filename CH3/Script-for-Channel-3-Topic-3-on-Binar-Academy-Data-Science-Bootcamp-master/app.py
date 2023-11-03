@@ -37,17 +37,21 @@ swagger = Swagger(app, template=swagger_template,
 
 # end template swagger
 
-@swag_from("docs/hello_world.yml", methods=['GET'])
-@app.route('/', methods=['GET'])
 def hello_world():
     json_response = {
-        'status_code': 200,
+        # 'status_code': 200,
         'description': "Menyapa Hello World",
         'data': "Hello World",
+        'is_condition_met' : True
     }
+    
+    if json_response['is_condition_met']:
+        status_code = 200  # Ubah status code menjadi 200 jika kondisi terpenuhi
+    else:
+        status_code = 404  # Ubah status code menjadi 404 jika kondisi tidak terpenuhi
 
     response_data = jsonify(json_response)
-    return response_data
+    return response_data, status_code  # Mengembalikan respons dengan status code yang telah ditentukan
 
 @swag_from("docs/text.yml", methods=['GET'])
 @app.route('/text', methods=['GET'])
