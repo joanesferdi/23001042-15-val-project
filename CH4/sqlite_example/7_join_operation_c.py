@@ -13,4 +13,3 @@ for row in cursor:
 print()
 print("Operation done successfully")
 conn.close()
-
