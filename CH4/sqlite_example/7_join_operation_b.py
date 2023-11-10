@@ -7,6 +7,7 @@ print()
 print("List of Joined Data:")
 cursor = conn.execute("SELECT users.username, hobbies.name \
             FROM users LEFT JOIN hobbies ON users.rowid = hobbies.user_id")
+
 for row in cursor:
     print(row)
 

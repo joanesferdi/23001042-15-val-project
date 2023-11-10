@@ -7,9 +7,9 @@ print()
 conn.execute("DELETE FROM users where username = 'bintang';")
 conn.commit()
 
-
 print("List of Users:")
 cursor = conn.execute("SELECT * FROM users;")
+
 for row in cursor:
     print(row)
 
